@@ -98,7 +98,7 @@ export class GraphService {
     const response = await axios.get(url);
     const data = response.data;
 
-    if (data.Response === 'False') {
+    if (!data.Response) {
       throw new Error(data.Error || 'Movie not found');
     }
 

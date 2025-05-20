@@ -7,7 +7,6 @@ import type { GraphNode, GraphData } from './types';
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState<GraphData | null>(null);
-  const [selectedNode, setSelectedNode] = useState<GraphNode | null>(null);
 
   const handleSearch = async () => {
     if (!searchTerm) return;
@@ -26,16 +25,9 @@ function App() {
       <Search
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
-        handleSearch={handleSearch}
-        onSelectResult={(node) => {
-          setSelectedNode(node);
-          setSearchResults(null);
-          setSearchTerm('');
-        } } searchResults={[]}      />
+        handleSearch={handleSearch}/>
       <GraphViewer
         searchResults={searchResults}
-        selectedNode={selectedNode}
-        setSelectedNode={setSelectedNode}
       />
     </>
   );

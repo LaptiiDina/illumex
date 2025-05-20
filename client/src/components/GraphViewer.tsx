@@ -5,14 +5,13 @@ import type { GraphData, GraphNode, Link } from '../types';
 
 
 type Props = {
-    searchResults: GraphData|null; 
-  selectedNode: GraphNode | null;
-  setSelectedNode: (node: GraphNode | null) => void;
+  searchResults: GraphData|null; 
 };
 
-const GraphViewer: React.FC<Props> = ({ searchResults, selectedNode, setSelectedNode }) => {
+const GraphViewer: React.FC<Props> = ({ searchResults }) => {
   const [fullGraphData, setFullGraphData] = useState<GraphData>({ nodes: [], links: [] });
   const [error, setError] = useState<string>('');
+  const [selectedNode, setSelectedNode] = useState<GraphNode | null>(null);
 
   useEffect(() => {
     fetch('http://localhost:3000/graph')
